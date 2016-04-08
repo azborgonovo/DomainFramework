@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace DomainFramework.Events
+﻿namespace DomainFramework.EventHandling
 {
     /// <summary>
     /// Handles events of class <typeparamref name="T"/>.

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DomainFramework
+namespace DomainFramework.Events
 {
     /// <summary>
     /// Base class for all domain events.

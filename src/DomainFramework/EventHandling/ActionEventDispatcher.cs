@@ -1,21 +1,14 @@
-﻿using Microsoft.Practices.ServiceLocation;
-using System;
+﻿using System;
 using System.Collections.Generic;
 
-namespace DomainFramework.Events
+namespace DomainFramework.EventHandling
 {
-    /// <summary>
-    /// Provides logic for raising and handling domain events.
-    /// </summary>
-    /// http://dddsamplenet.codeplex.com/SourceControl/latest#DDDSample-Vanilla/Domain/DomainEvents.cs
-    public static class DomainEvents
+    public class ActionEventDispatcher : EventDispatcherBase
     {
         [ThreadStatic]
-        static List<Delegate> _actions;
+        private static List<Delegate> _actions;
 
-        static IEventDispatcher _eventDispatcher;
-
-        static List<Delegate> Actions
+        private static List<Delegate> Actions
         {
             get
             {
@@ -26,33 +19,23 @@ namespace DomainFramework.Events
             }
         }
 
-        static DomainEvents()
-        {
-            _eventDispatcher = new CommonServiceLocatorEventDispatcher();
-        }
-
         public static IDisposable Register<T>(Action<T> callback)
         {
             Actions.Add(callback);
             return new DomainEventRegistrationRemover(() => Actions.Remove(callback));
         }
 
-        public static void SetEventDispatcher(IEventDispatcher eventDispatcher)
+        protected override IEnumerable<IEventHandler<T>> GetEventHandlers<T>()
         {
-            _eventDispatcher = eventDispatcher;
-        }
-
-        public static void Raise<T>(T @event) where T : DomainEvent
-        {
-            _eventDispatcher.Dispatch(@event);
-
             foreach (var action in Actions)
             {
                 var typedAction = action as Action<T>;
                 if (typedAction != null)
-                    typedAction(@event);
+                    yield return new ActionEventHandler<T>(typedAction);
             }
         }
+
+        #region Private classes
 
         private sealed class DomainEventRegistrationRemover : IDisposable
         {
@@ -68,5 +51,22 @@ namespace DomainFramework.Events
                 _callOnDispose();
             }
         }
+
+        private sealed class ActionEventHandler<T> : IEventHandler<T>
+        {
+            readonly Action<T> _action;
+
+            public ActionEventHandler(Action<T> action)
+            {
+                _action = action;
+            }
+
+            public void Handle(T @event)
+            {
+                _action(@event);
+            }
+        }
+
+        #endregion
     }
 }

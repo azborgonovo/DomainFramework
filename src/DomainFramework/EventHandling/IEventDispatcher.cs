@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace DomainFramework.Events
+﻿namespace DomainFramework.EventHandling
 {
     /// <summary>
     /// http://benfoster.io/blog/deferred-domain-events
@@ -12,9 +6,9 @@ namespace DomainFramework.Events
     public interface IEventDispatcher
     {
         /// <summary>
-        /// Handles the event.
+        /// Dipatch an event to related registered event handlers
         /// </summary>
         /// <param name="event">Event object.</param>
-        void Dispatch<T>(T @event) where T : DomainEvent;
+        void Dispatch<T>(T @event);
     }
 }
