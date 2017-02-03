@@ -4,8 +4,8 @@ Pieces of code that serve as a bootstrap to the Building Blocks of a Domain-driv
 
 Projects:
 * DomainFramework
-  *Entity
-  *ValueObject
+  * Entity
+  * ValueObject
 * DomainFramework.Events
   * DomainEvent
   * IEventHandler
