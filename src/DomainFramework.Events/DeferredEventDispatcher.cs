@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Concurrent;
 
-namespace DomainFramework.EventHandling
+namespace DomainFramework.Events
 {
     public class DeferredEventDispatcher : IEventDispatcher
     {

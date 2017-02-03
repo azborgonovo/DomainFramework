@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace DomainFramework.EventHandling
+namespace DomainFramework.Events
 {
     public class ActionEventDispatcher : EventDispatcherBase
     {

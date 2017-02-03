@@ -1,6 +1,4 @@
-﻿using DomainFramework.EventHandling;
-
-namespace DomainFramework
+﻿namespace DomainFramework.Events
 {
     /// <summary>
     /// Provides logic for raising domain events.

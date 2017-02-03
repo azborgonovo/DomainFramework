@@ -1,4 +1,4 @@
-﻿namespace DomainFramework.EventHandling
+﻿namespace DomainFramework.Events
 {
     /// <summary>
     /// Handles events of class <typeparamref name="T"/>.

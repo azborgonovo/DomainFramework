@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace DomainFramework
+namespace DomainFramework.Events
 {
     /// <summary>
     /// Base class for all domain events

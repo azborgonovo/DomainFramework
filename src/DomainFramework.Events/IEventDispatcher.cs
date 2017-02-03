@@ -1,4 +1,4 @@
-﻿namespace DomainFramework.EventHandling
+﻿namespace DomainFramework.Events
 {
     /// <summary>
     /// http://benfoster.io/blog/deferred-domain-events
