@@ -1,18 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace InfrastructureFramework.EF6
 {
-    public abstract class Repository<T> : IRepository<T> where T : class
+    public abstract class RepositoryBase<T> where T : class
     {
-        readonly IDbSetFactory _dbSetFactory;
+        protected readonly IDbSet<T> DbSet;
 
-        public Repository(IDbSetFactory dbSetFactory)
+        public RepositoryBase(IDbSetFactory dbSetFactory)
         {
-            _dbSetFactory = dbSetFactory;
+            DbSet = dbSetFactory.CreateDbSet<T>();
         }
 
         public abstract T Get(Func<T, bool> predicate);
