@@ -19,3 +19,4 @@ Projects:
   * EntityFrameworkUnitOfWork
   * EntityFrameworkRepository
   * EntityFrameworkDataContext
+  * InMemoryDbSetFactory
