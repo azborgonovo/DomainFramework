@@ -48,7 +48,6 @@
     <Compile Include="EventHandling\ActionEventDispatcher.cs" />
     <Compile Include="EventHandling\DeferredEventDispatcher.cs" />
     <Compile Include="EventHandling\EventDispatcherBase.cs" />
-    <Compile Include="EventHandling\CommonServiceLocatorEventDispatcher.cs" />
     <Compile Include="EventHandling\IEventDispatcher.cs" />
     <Compile Include="EventHandling\IEventHandler.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
