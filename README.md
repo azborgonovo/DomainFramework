@@ -10,10 +10,10 @@ Projects:
   * DomainEvent
   * IEventHandler
   * IEventDispatcher
-* InfraFramework.Data
+* CommonUnitOfWork
   * UnitOfWork
   * UnitOfWorkFactory
-* InfraFramework.Data.EF6
+* CommonUnitOfWork.EF6
   * IDbSetFactory
   * ITenant
   * EntityFrameworkUnitOfWork
