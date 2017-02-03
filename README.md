@@ -13,7 +13,7 @@ Projects:
 * CommonUnitOfWork
   * UnitOfWork
   * UnitOfWorkFactory
-* CommonUnitOfWork.EF6
+* InfrastructureFramework.EF6
   * IDbSetFactory
   * ITenant
   * EntityFrameworkUnitOfWork
