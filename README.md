@@ -4,17 +4,18 @@ Pieces of code that serve as a bootstrap to the Building Blocks of a Domain-driv
 
 Projects:
 - DomainFramework
--- Entity
--- ValueObject
+..-Entity
+..-ValueObject
 - DomainFramework.Events
--- DomainEvent
--- IEventHandler
--- IEventDispatcher
+..- DomainEvent
+..- IEventHandler
+..- IEventDispatcher
 - InfraFramework.Data
--- UnitOfWork
--- UnitOfWorkFactory
--- Repository
+..- UnitOfWork
+..- UnitOfWorkFactory
 - InfraFramework.Data.EF6
--- IDbSetFactory
--- EntityFrameworkUnitOfWork
--- EntityFrameworkRepository
+..- IDbSetFactory
+..- ITenant
+..- EntityFrameworkUnitOfWork
+..- EntityFrameworkRepository
+..- EntityFrameworkDataContext
