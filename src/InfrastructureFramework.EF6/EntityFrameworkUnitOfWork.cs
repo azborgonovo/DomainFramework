@@ -1,47 +1,56 @@
 ﻿using CommonUnitOfWork;
 using System.Data.Entity;
 using System.Threading.Tasks;
+using System;
 
 namespace InfrastructureFramework.EF6
 {
-    public class EntityFrameworkUnitOfWork : IUnitOfWork
+    public class EntityFrameworkUnitOfWork : DbContext, IUnitOfWork, IDbSetFactory
     {
-        bool _usesDatabaseTransaction;
-        DbContext _dbContext;
-        DbContextTransaction _dbContextTransaction;
+        DbContextTransaction dbContextTransaction;
 
-        public EntityFrameworkUnitOfWork(DbContext dbContext, bool beginTransaction)
+        public EntityFrameworkUnitOfWork() : this(false) { }
+
+        public EntityFrameworkUnitOfWork(bool beginTransaction) : this(null, false) { }
+
+        public EntityFrameworkUnitOfWork(string nameOrConnectionString, bool beginTransaction)
+            : base(nameOrConnectionString)
         {
-            _dbContext = dbContext;
-            _usesDatabaseTransaction = beginTransaction;
-            if (_usesDatabaseTransaction)
-                _dbContextTransaction = _dbContext.Database.BeginTransaction();
+            if (beginTransaction)
+                dbContextTransaction = Database.BeginTransaction();
         }
-
+        
         public void Commit()
         {
-            _dbContext.SaveChanges();
-            if (_usesDatabaseTransaction && _dbContextTransaction != null)
-                _dbContextTransaction.Commit();
+            SaveChanges();
+            if (dbContextTransaction != null)
+                dbContextTransaction.Commit();
         }
 
         public async Task CommitAsync()
         {
-            await _dbContext.SaveChangesAsync();
-            if (_usesDatabaseTransaction && _dbContextTransaction != null)
-                _dbContextTransaction.Commit();
+            await SaveChangesAsync();
+            if (dbContextTransaction != null)
+                dbContextTransaction.Commit();
         }
 
         public void Rollback()
         {
-            if (_usesDatabaseTransaction && _dbContextTransaction != null)
-                _dbContextTransaction.Rollback();
+            if (dbContextTransaction != null)
+                dbContextTransaction.Rollback();
         }
 
-        public void Dispose()
+        public new void Dispose()
         {
-            if (_dbContextTransaction != null)
-                _dbContextTransaction.Dispose();
+            if (dbContextTransaction != null)
+                dbContextTransaction.Dispose();
+
+            base.Dispose();
+        }
+
+        public IDbSet<T> CreateDbSet<T>() where T : class
+        {
+            return Set<T>();
         }
     }
 }

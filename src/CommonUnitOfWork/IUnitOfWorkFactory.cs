@@ -3,6 +3,6 @@
     public interface IUnitOfWorkFactory
     {
         IUnitOfWork CreateUnitOfWork();
-        IUnitOfWork CreateUnitOfWork(bool beginRepositoryTransaction);
+        IUnitOfWork CreateUnitOfWork(bool beginTransaction);
     }
 }

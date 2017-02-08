@@ -49,14 +49,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="EntityFrameworkContext.cs" />
-    <Compile Include="EntityFrameworkRepository.cs" />
+    <Compile Include="EntityFrameworkMultiTenantUnitOfWork.cs" />
     <Compile Include="IDbSetFactory.cs" />
+    <Compile Include="IMultiTenantUnitOfWorkFactory.cs" />
     <Compile Include="InMemoryDbSet.cs" />
-    <Compile Include="ITenant.cs" />
     <Compile Include="EntityFrameworkUnitOfWork.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="RepositoryBase.cs" />
+    <Compile Include="EntityFrameworkRepositoryBase.cs" />
+    <Compile Include="Tenant.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
