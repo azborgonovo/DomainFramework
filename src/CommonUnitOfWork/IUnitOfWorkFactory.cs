@@ -1,8 +1,8 @@
 ﻿namespace CommonUnitOfWork
 {
-    public interface IUnitOfWorkFactory
+    public interface IUnitOfWorkFactory<TUnitOfWork> where TUnitOfWork : IUnitOfWork
     {
-        IUnitOfWork CreateUnitOfWork();
-        IUnitOfWork CreateUnitOfWork(bool beginTransaction);
+        TUnitOfWork CreateUnitOfWork();
+        TUnitOfWork CreateUnitOfWork(bool beginTransaction);
     }
 }

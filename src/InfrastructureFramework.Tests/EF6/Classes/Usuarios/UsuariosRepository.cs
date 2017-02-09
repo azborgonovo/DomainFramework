@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 
 namespace InfrastructureFramework.Tests.EF6.Classes
 {
-    public class UsersRepository : EntityFrameworkRepositoryBase<User>, IUsersRepository
+    public class UsuariosRepository : EntityFrameworkRepositoryBase<Usuario>, IUsuariosRepository
     {
-        public UsersRepository(ICoreUnitOfWork unitOfWork)
+        public UsuariosRepository(IVendasUnitOfWork unitOfWork)
             : base(unitOfWork)
         {
         }

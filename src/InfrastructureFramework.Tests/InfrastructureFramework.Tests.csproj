@@ -43,6 +43,10 @@
       <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Microsoft.Practices.ServiceLocation, Version=1.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\CommonServiceLocator.1.3\lib\portable-net4+sl5+netcore45+wpa81+wp8\Microsoft.Practices.ServiceLocation.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
   </ItemGroup>
@@ -59,18 +63,27 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
-    <Compile Include="EF6\Classes\CoreContext.cs" />
-    <Compile Include="EF6\Classes\CoreUnitOfWork.cs" />
-    <Compile Include="EF6\Classes\ICoreUnitOfWork.cs" />
-    <Compile Include="EF6\Classes\IUsersRepository.cs" />
-    <Compile Include="EF6\Classes\User.cs" />
-    <Compile Include="EF6\Classes\UsersRepository.cs" />
+    <Compile Include="EF6\Classes\ApplicationService.cs" />
+    <Compile Include="EF6\Classes\IVendasContext.cs" />
+    <Compile Include="EF6\Classes\VendasContext.cs" />
+    <Compile Include="EF6\Classes\VendasUnitOfWork.cs" />
+    <Compile Include="EF6\Classes\IVendasUnitOfWork.cs" />
+    <Compile Include="EF6\Classes\Usuarios\IUsuariosRepository.cs" />
+    <Compile Include="EF6\Classes\Produtos\Produto.cs" />
+    <Compile Include="EF6\Classes\Produtos\ProdutosService.cs" />
+    <Compile Include="EF6\Classes\Usuarios\Usuario.cs" />
+    <Compile Include="EF6\Classes\Usuarios\UsuariosRepository.cs" />
+    <Compile Include="EF6\Classes\Usuarios\UsuariosService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CommonUnitOfWork\CommonUnitOfWork.csproj">
       <Project>{caf677d9-62d3-49cd-b4b3-3f3f58a61a93}</Project>
       <Name>CommonUnitOfWork</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DomainFramework\DomainFramework.csproj">
+      <Project>{C28EB127-165F-4FEC-91E7-6E16DE8B1371}</Project>
+      <Name>DomainFramework</Name>
     </ProjectReference>
     <ProjectReference Include="..\InfrastructureFramework.EF6\InfrastructureFramework.EF6.csproj">
       <Project>{44bc3a97-9c83-40f6-8351-635ae25d1343}</Project>

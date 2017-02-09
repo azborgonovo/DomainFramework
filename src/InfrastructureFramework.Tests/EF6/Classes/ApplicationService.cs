@@ -6,7 +6,10 @@ using System.Threading.Tasks;
 
 namespace InfrastructureFramework.Tests.EF6.Classes
 {
-    public interface IUsersRepository
+    public class ApplicationService
     {
+        public static void Fail(Exception ex = null)
+        {
+        }
     }
 }
